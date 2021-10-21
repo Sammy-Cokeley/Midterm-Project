@@ -8,11 +8,12 @@ export (NodePath) onready var _east_wall = get_node("EastWall") as Node2D
 export (NodePath) onready var _south_wall = get_node("SouthWall") as Node2D
 export (NodePath) onready var _west_wall = get_node("WestWall") as Node2D
 
-var _walls = [_north_wall,_east_wall,_south_wall,_west_wall];
+export (NodePath) onready var _item = get_node("EastWall/Item") as Node2D
+
 var _wall_pointer = 0
-var _current_screen = 0
 var _left_mouse_entered = false;
 var _right_mouse_entered = false;
+var _item_entered = false;
 
 func _ready():
 	_north_wall.visible = true;
@@ -33,6 +34,14 @@ func _on_RightArea_mouse_exited():
 	_right_side.visible = false;
 	_right_mouse_entered = false;
 
+
+func _on_Area2D_mouse_entered():
+	_item_entered = true;
+
+func _on_Area2D_mouse_exited():
+	_item_entered = false;
+
+
 func _input(event):
 	if _left_mouse_entered and event.is_pressed() and event.button_index == BUTTON_LEFT:
 		_wall_pointer = _wall_pointer - 1
@@ -44,6 +53,8 @@ func _input(event):
 		if(_wall_pointer == 4):
 			_wall_pointer = 0
 		update_view();
+	elif _item_entered and event.is_pressed() and event.button_index == BUTTON_LEFT:
+		_item.queue_free();
 
 func update_view():
 	if _wall_pointer == 0:
