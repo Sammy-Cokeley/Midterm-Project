@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://1x/WestWall.png" type="Texture" id=1]
+[ext_resource path="res://CaveRoom.gd" type="Script" id=2]
+[ext_resource path="res://1x/SouthWall.png" type="Texture" id=3]
+[ext_resource path="res://1x/EastWall.png" type="Texture" id=4]
+[ext_resource path="res://1x/NorthWall.png" type="Texture" id=5]
+
+[node name="CaveRoom" type="Node2D"]
+script = ExtResource( 2 )
+_north_wall = NodePath("NorthWall")
+_east_wall = NodePath("EastWall")
+_south_wall = NodePath("SouthWall")
+_west_wall = NodePath("WestWall")
+
+[node name="NorthWall" type="Node2D" parent="."]
+visible = false
+
+[node name="NorthWallSprite" type="Sprite" parent="NorthWall"]
+position = Vector2( 480, 270 )
+texture = ExtResource( 5 )
+
+[node name="EastWall" type="Node2D" parent="."]
+visible = false
+
+[node name="EastWallSprite" type="Sprite" parent="EastWall"]
+position = Vector2( 480, 270 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SouthWall" type="Node2D" parent="."]
+visible = false
+
+[node name="SouthWallSprite" type="Sprite" parent="SouthWall"]
+position = Vector2( 480, 270 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="WestWall" type="Node2D" parent="."]
+visible = false
+
+[node name="WestWallSprite" type="Sprite" parent="WestWall"]
+position = Vector2( 480, 270 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}

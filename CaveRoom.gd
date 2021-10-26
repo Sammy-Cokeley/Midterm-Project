@@ -1,5 +1,7 @@
 extends Node2D
 
+export var _room_name = ""
+
 export (NodePath) onready var _north_wall = get_node("NorthWall") as Node2D
 export (NodePath) onready var _east_wall = get_node("EastWall") as Node2D
 export (NodePath) onready var _south_wall = get_node("SouthWall") as Node2D
